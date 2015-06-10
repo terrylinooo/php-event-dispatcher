@@ -1,6 +1,7 @@
 # PHP-EventDispatcher
 
 PHP EventDispatcher is the most easy-to-use and simple EventDispatcher Class for PHP.
+PHP EventDispatcher is designed by singleton pattern, if you're looking for Event Dispatcher supports Dependency Injection, you may choose Symfony's EventDispatcher.
 
 Original idea is from *Symfony's event listener system.* 
 http://symfony.com/doc/current/components/event_dispatcher/index.html
