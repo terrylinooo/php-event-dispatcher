@@ -16,10 +16,6 @@ Download class.event.php to your probject folder, and then include it anywhere.
 
 Add a listener function to an event
 ```
-addListener('event_name', function() {
-  // do something
-});
-// or
 addListener('event_name', 'function_name');
 ```
 
