@@ -23,24 +23,31 @@ addListener('event_name', 'function_name');
 ```
 
 Run this event
+
 ```
 doDispatch('event_name');
 ```
 
 Remove a listener function from an envet
+
 Return: true / false
+
 ```
 removeListener('event_name', 'function_name');
 ```
 
 Check out if there is any listener defined by an event
+
 Return: true / false
+
 ```
 hasListener('event_name');
 ```
 
 Check if an event Listener actually exists
+
 Return: true / false
+
 ```
 isListening('event_name');
 ```
