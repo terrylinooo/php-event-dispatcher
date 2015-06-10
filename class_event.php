@@ -10,10 +10,7 @@
   
 class EventDispatcher {
 
-    // Instance of this class
     public static $instance;
-    
-    // Action statics
     public static $events;
     public static $current_event;
     public static $happened_events;
