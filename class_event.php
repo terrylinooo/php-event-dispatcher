@@ -274,12 +274,6 @@ function isListening($name, $priority = 10)
     return EventDispatcher::instance()->isListening($name, $priority);
 }
 
-
-/**
-* Check if a particular Listener has been called
-*
-* @param mixed $name
-*/
 function nowListener()
 {
     return EventDispatcher::instance()->nowListener();
