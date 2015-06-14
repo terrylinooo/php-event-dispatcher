@@ -11,6 +11,14 @@ But I think it is a bit complex to me, I just want a simple Event Dispatcher for
 
 Download class.event.php to your probject folder, and then include it anywhere.
 
+```
+include_once('class.event.php');
+```
+
+PHP Event Dispatcher is designed as Singleton Pattern, you can not call it by **New EventDispatcher()** Just because to make sure that only an Event Dispatcher to handle all events.
+
+Use the following **global** functions to use PHP Event Dispatcher, you can put it anywhere and easy inject in any framework.
+
 ### How to use
 
 Add a listener function to an event
