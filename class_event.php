@@ -1,22 +1,14 @@
-<?php
-/**
-* PHP EventDispatcher
-*
-* @author Shinbon Lin
-* @copyright Copyright (c) 2015 - Shinbon Lin
-* @license http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
-* @since Version 1.0
-*/
-  
 class EventDispatcher {
 
+    // Instance of this class
     public static $instance;
+    
+    // Action statics
     public static $events;
     public static $current_event;
     public static $happened_events;
-
-    // Set  __construct() as private to make sure Singleton
     
+
     private function __construct()
     {
         self::$instance = null;
@@ -27,7 +19,7 @@ class EventDispatcher {
 
     /**
     * Instance()
-    *
+    * Singleton pattern
     * The instance is made for easy use the function call.
     */
     public static function instance()
@@ -39,9 +31,10 @@ class EventDispatcher {
 
         return self::$instance;
     }
+    
 
     /**
-    * addListener
+    * addListener()
     *
     * Add a new trigger
     * 
@@ -74,7 +67,8 @@ class EventDispatcher {
         
         return true;
     }
-
+    
+    
     /**
     * doDispatch()
     *
@@ -86,6 +80,7 @@ class EventDispatcher {
     */
     public function doDispatch($name, $arguments = "")
     {
+
         if ( !isset(self::$events[$name]) )
         {
             return $arguments;
@@ -96,29 +91,33 @@ class EventDispatcher {
 
         ksort(self::$events[$name]);
         
-        foreach ( self::$events[$name] AS $priority => $names )
+        foreach ( self::$events[$name] AS $priority => $actions )
         {
-            if ( is_array($names) )
+            if ( is_array($actions) )
             {
-                foreach ( $names AS $name )
+                foreach ( $actions AS $action )
                 {
                     // run Listener and store the value returned by registered functions
-                    $return_arguments = call_user_func_array($name['function'], array(&$arguments));
+                    $return_arguments = call_user_func_array($action['function'], array(&$arguments));
                     
                     if ( $return_arguments )
                     {
                         $arguments = $return_arguments;
                     }
-                    
+
                     // Store called Listeners
-                    self::$happened_events[$name][$priority];
+                    self::$happened_events[$name][$priority] = $action['function'];
                 }
             }
         }
+        
+        // No hook is running any more
         self::$current_event = '';
+        
         return $arguments;
     }
-
+      
+    
     /**
     * removeListener()
     *
@@ -137,7 +136,8 @@ class EventDispatcher {
             return true;
         }
     }
-
+    
+    
     /**
     * nowListener()
     *
@@ -148,7 +148,8 @@ class EventDispatcher {
     {
         return self::$current_event;
     }
-
+    
+    
     /**
     * isListening()
     *
@@ -168,7 +169,8 @@ class EventDispatcher {
             return false;
         }
     }
-
+    
+    
     /**
     * hasListener()
     *
@@ -253,7 +255,7 @@ function hasListener($name)
 }
 
 /**
-* Check if an event Listener actually exists
+* Check if a particular Listener has been called
 *
 * @param mixed $name
 */
