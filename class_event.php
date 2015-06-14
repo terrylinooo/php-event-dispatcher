@@ -96,7 +96,7 @@ class EventDispatcher {
             return $arguments;
         }
         
-        // Set the current running event Listener to this
+        // Set the current running event Listener
         self::$current_event = $name;
 
         ksort(self::$events[$name]);
@@ -108,20 +108,28 @@ class EventDispatcher {
                 foreach ( $actions AS $action )
                 {
                     // run Listener and store the value returned by registered functions
-                    $return_arguments = call_user_func_array($action['function'], array(&$arguments));
-                    
-                    if ( $return_arguments )
+                    if ( function_exists($action['function']) )
                     {
-                        $arguments = $return_arguments;
+                    
+                        $return_arguments = call_user_func_array($action['function'], array(&$arguments));
+                        
+                        if ( $return_arguments )
+                        {
+                            $arguments = $return_arguments;
+                        }
+    
+                        // Store called Listeners
+                        self::$happened_events[$name][$priority] = $action['function'];
                     }
-
-                    // Store called Listeners
-                    self::$happened_events[$name][$priority] = $action['function'];
+                    else {
+                        
+                        //die('Function ' . $action['function'] . ' not found');
+                    }
                 }
             }
         }
         
-        // No hook is running any more
+        // This listener is finished its job
         self::$current_event = '';
         
         return $arguments;
@@ -273,6 +281,7 @@ function isListening($name, $priority = 10)
 {
     return EventDispatcher::instance()->isListening($name, $priority);
 }
+
 
 function nowListener()
 {
