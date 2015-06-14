@@ -23,7 +23,7 @@ class EventDispatcher {
     {
         self::$instance = null;
         self::$events = array();
-        self::$current_event = array();
+        self::$current_event = '';
         self::$happened_events = array();
     }
 
@@ -269,7 +269,18 @@ function hasListener($name)
 *
 * @param mixed $name
 */
-function isListening($name)
+function isListening($name, $priority = 10)
 {
-    return EventDispatcher::instance()->isListening($name, $priority = 10);
+    return EventDispatcher::instance()->isListening($name, $priority);
+}
+
+
+/**
+* Check if a particular Listener has been called
+*
+* @param mixed $name
+*/
+function nowListener()
+{
+    return EventDispatcher::instance()->nowListener();
 }
