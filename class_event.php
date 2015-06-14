@@ -15,7 +15,9 @@ class EventDispatcher {
     public static $current_event;
     public static $happened_events;
 
-    public function __construct()
+    // Set  __construct() as private to make sure Singleton
+    
+    private function __construct()
     {
         self::$instance = null;
         self::$events = array();
