@@ -17,6 +17,8 @@ class EventDispatcher {
     public static $events;
     public static $current_event;
     public static $happened_events;
+
+    private $error_message = '';
     
 
     private function __construct()
@@ -110,20 +112,22 @@ class EventDispatcher {
                     // run Listener and store the value returned by registered functions
                     if ( function_exists($action['function']) )
                     {
-                    
+
                         $return_arguments = call_user_func_array($action['function'], array(&$arguments));
-                        
+
                         if ( $return_arguments )
                         {
                             $arguments = $return_arguments;
                         }
-    
+
                         // Store called Listeners
                         self::$happened_events[$name][$priority] = $action['function'];
                     }
                     else {
-                        
-                        //die('Function ' . $action['function'] . ' not found');
+
+                        $this->error_message = 'Event Dispatcher: Function "' . $action['function'] . '" not found. (' . $name . ')';
+
+                        $this->hasError();
                     }
                 }
             }
@@ -223,7 +227,13 @@ class EventDispatcher {
             print_r(self::$happened_events);
             echo "</pre>";
         }       
-    }   
+    }
+
+    private function hasError() {
+
+        die($this->error_message);
+    }
+
 }
 
 /**
