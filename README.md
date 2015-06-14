@@ -54,12 +54,17 @@ nowListener('event_name');
 ```
 ## Examples
 
+test.php
 ```
+<?php
+
+include_once('class.event.php');
+
 addListener('event_send_message', 'send_message');
 
 function send_message() {
     echo '<p>A message has been sent!!</p>';
-    echo '<p>Current Running Event is called: <strong>' . nowListener('event_name') . '</strong></p>;
+    echo '<p>Current Running Event is called: <strong>' . nowListener('event_name') . '</strong></p>';
 }
 
 doDispatch('event_send_message');
@@ -72,4 +77,6 @@ if ( hasListener($event_name) ) {
 else {
   echo '<p>Listener <strong>' . $event_name . '</strong> is not existed.<p>';
 }
+
+?>
 ```
