@@ -11,7 +11,7 @@ But I think it is a bit complex to me, I just want a simple Event Dispatcher for
 
 Download class.event.php to your probject folder, and then include it anywhere.
 
-```
+```php
 include_once('class.event.php');
 ```
 
@@ -22,13 +22,14 @@ Use the following **global** functions to use PHP Event Dispatcher, you can put 
 ### How to use
 
 Add a listener function to an event
-```
+
+```php
 addListener('event_name', 'function_name');
 ```
 
 Run this event
 
-```
+```php
 doDispatch('event_name');
 ```
 
@@ -36,7 +37,7 @@ Remove a listener function from an envet
 
 Return: true / false
 
-```
+```php
 removeListener('event_name', 'function_name');
 ```
 
@@ -44,7 +45,7 @@ Check out if there is any listener defined by an event
 
 Return: true / false
 
-```
+```php
 hasListener('event_name');
 ```
 
@@ -52,18 +53,21 @@ Check if an event Listener actually exists
 
 Return: true / false
 
-```
+```php
 isListening('event_name');
 ```
 
 Check current running event Listener
-```
+
+```php
 nowListener();
 ```
+
 ## Examples
 
 test.php
-```
+
+```php
 <?php
 
 include_once('class.event.php');
