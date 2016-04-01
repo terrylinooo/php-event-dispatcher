@@ -3,7 +3,7 @@
 * PHP EventDispatcher
 *
 * @author Shinbon Lin
-* @copyright Copyright (c) 2015 - Shinbon Lin
+* @copyright Copyright (c) 2015 - Terry Lin
 * @license http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
 * @since Version 1.0
 */
