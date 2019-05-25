@@ -2,14 +2,14 @@
 
 PHP Event Dispatcher is the most easy-to-use and simple Event Dispatcher PHP Class (Singleton Pattern).
 
-Original idea is from **Symfony's event listener system.** 
+The original idea is from **Symfony's event listener system.** 
 http://symfony.com/doc/current/components/event_dispatcher/index.html
 
-But I think it is a bit complex to me, I just want a simple Event Dispatcher for my probject. Therefore I made this for myself, and someone esle needs the simple EventDispatcher.
+But I think it is a bit complex to me, I just want a simple Event Dispatcher for my project. Therefore I made this for myself, and someone else needs the simple EventDispatcher.
 
 ### Installation
 
-Download class.event.php to your probject folder, and then include it anywhere.
+Download class.event.php to your project folder, and then include it anywhere.
 
 ```php
 include_once('class.event.php');
@@ -17,7 +17,7 @@ include_once('class.event.php');
 
 PHP Event Dispatcher is designed as Singleton Pattern, you can not call it by **New EventDispatcher()** Just because to make sure that only an Event Dispatcher to handle all events.
 
-Use the following **global** functions to use PHP Event Dispatcher, you can put it anywhere and easy inject in any framework.
+Use the following **global** functions to use PHP Event Dispatcher, you can put it anywhere and easily inject in any framework.
 
 ### How to use
 
