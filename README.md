@@ -1,5 +1,7 @@
 # PHP Event Dispatcher
 
+## This library is abandoned, please use [Event Dispatcher](https://github.com/terrylinooo/event-dispatcher) instead.
+
 PHP Event Dispatcher is the most easy-to-use and simple Event Dispatcher PHP Class (Singleton Pattern).
 
 Original idea is from **Symfony's event listener system.** 
